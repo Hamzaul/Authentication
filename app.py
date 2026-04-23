@@ -1,3 +1,5 @@
+import token
+
 from flask import Flask, request, jsonify, render_template, session, url_for
 from flask_cors import CORS
 from flask_mail import Mail, Message
@@ -11,7 +13,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
-CORS(app, origins=["https://127.0.0.1:5500"])  # allow frontend (Live Server)
+CORS(app, origins="*") # allow frontend (Live Server)
 app.secret_key = os.getenv("SECRET_KEY", "devsecret")
 
 # ====== Config ======
@@ -76,7 +78,8 @@ def api_register():
         'email': email,
         'expires': datetime.utcnow() + timedelta(hours=1)
     }
-    verify_link = url_for('verify_email', token=token, _external=True)
+    BASE_URL = "https://authentication-eng2.onrender.com"
+    verify_link = f"{BASE_URL}/verify-email?token={token}"
 
     try:
         msg = Message("Verify Your Email", recipients=[email])
@@ -155,7 +158,8 @@ def forgot_password():
         'expires': datetime.utcnow() + timedelta(minutes=15)
     }
 
-    reset_link = url_for('page_reset_password', token=token, _external=True)
+    BASE_URL = "https://authentication-eng2.onrender.com"
+    reset_link = f"{BASE_URL}/reset-password?token={token}"
 
     try:
         msg = Message("Password Reset Request", recipients=[email])
