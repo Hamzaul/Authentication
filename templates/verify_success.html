@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Email Verified</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <section class="card">
+    <div class="card-body">
+      <h1>Email Verified ✅</h1>
+      <p>Thanks, {{ email }} has been verified. You can now <a href="/login">login</a>.</p>
+    </div>
+  </section>
+</body>
+</html>

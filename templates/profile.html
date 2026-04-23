@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Profile · AuthDemo{% endblock %}
+
+{% block content %}
+<section class="card">
+  <div class="card-body">
+    <h1>Your Profile 👤</h1>
+    <p><strong>Username:</strong> <span id="profileUsername"></span></p>
+    <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+    <button id="logoutBtn" class="btn danger">Logout</button>
+    <p id="profileMsg" class="msg"></p>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/profile.js') }}"></script>
+{% endblock %}

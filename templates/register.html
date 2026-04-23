@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Register · AuthDemo{% endblock %}
+
+{% block content %}
+<div class="card fade-in">
+  <div class="card-body">
+    <h1>Create Account ✨</h1>
+    <p class="muted">Join us and get started quickly</p>
+
+    <form id="registerForm" class="form">
+      <label>
+        Username
+        <input type="text" id="regUsername" placeholder="Choose a username" required />
+      </label>
+
+      <label>
+        Email
+        <input type="email" id="regEmail" placeholder="Enter your email" required />
+      </label>
+
+      <label>
+        Password
+        <input type="password" id="regPassword" placeholder="Create a password" required />
+      </label>
+
+      <button type="submit" class="btn primary">Register</button>
+    </form>
+
+    <div class="extra-links">
+      <a href="{{ url_for('page_login') }}" style="color: #fff;">Already have an account? Login</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+<script>
+  initRegister();   <!-- ✅ explicitly initialize -->
+</script>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Login · AuthDemo{% endblock %}
+
+{% block content %}
+<div class="card fade-in">
+  <div class="card-body">
+    <h1>Welcome Back 👋</h1>
+    <p class="muted">Login to access your profile</p>
+
+    <form id="loginForm" class="form">
+      <label>
+        Username
+        <input type="text" id="loginUsername" placeholder="Enter your username" required />
+      </label>
+      <label>
+        Password
+        <input type="password" id="loginPassword" placeholder="Enter your password" required />
+      </label>
+      <button type="submit" class="btn primary">Login</button>
+    </form>
+
+    <div class="extra-links">
+      <a href="{{ url_for('page_forgot_password') }}" style="color: #fff;">Forgot password?</a>
+      <span>·</span>
+      <a href="{{ url_for('page_register') }}" style="color: #fff;">Create account</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+<script>
+  initLogin();   <!-- ✅ explicitly initialize -->
+</script>
+{% endblock %}

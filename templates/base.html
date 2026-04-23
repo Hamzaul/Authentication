@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Auth UI{% endblock %}</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <!-- ====== HEADER ====== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="{{ url_for('index') }}">AuthDemo</a>
+      <nav class="nav">
+        <a href="{{ url_for('page_register') }}">Register</a>
+        <a href="{{ url_for('page_login') }}">Login</a>
+        <a href="{{ url_for('page_profile') }}">Profile</a>
+        <a href="{{ url_for('page_admin') }}">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ====== MAIN ====== -->
+  <main class="container page-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="site-footer">
+    <div class="container">
+      © <span id="year"></span> SUDARSHAN · All Rights Reserved
+    </div>
+  </footer>
+
+  <!-- ====== TOAST NOTIFICATIONS ====== -->
+  <div id="toast-container"></div>
+
+  <!-- ====== SCRIPTS ====== -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Toast utility
+    function showToast(message, type = "info") {
+      const container = document.getElementById("toast-container");
+      const toast = document.createElement("div");
+      toast.className = `toast ${type}`;
+      toast.textContent = message;
+
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.classList.add("show");
+      }, 100);
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+  </script>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>

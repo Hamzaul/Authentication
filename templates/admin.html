@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Admin · AuthDemo{% endblock %}
+
+{% block content %}
+<section class="card">
+  <div class="card-body" id="adminWrapper">
+    <h1>Admin Portal 🔑</h1>
+
+    <!-- Admin Login Form (only visible before login) -->
+    <form id="adminLoginForm" class="form">
+      <label>Admin Username
+        <input type="text" id="adminUsername" autocomplete="username" required>
+      </label>
+      <label>Admin Password
+        <input type="password" id="adminPassword" autocomplete="current-password" required>
+      </label>
+      <button type="submit" class="btn primary">Login</button>
+      <p id="adminMsg" class="msg"></p>
+    </form>
+
+    <!-- Admin Dashboard (only visible after login) -->
+    <div id="adminDashboard" class="hidden fade-in">
+      <div class="admin-topbar">
+        <h2>Admin Dashboard</h2>
+
+        <!-- Settings dropdown -->
+        <div class="settings" id="settings">
+          <button type="button" id="gearBtn" class="icon-btn" aria-haspopup="true" aria-expanded="false" aria-controls="settingsMenu" title="Settings">
+            ⚙️
+          </button>
+          <div id="settingsMenu" class="menu" role="menu">
+            <button id="adminLogoutBtn" class="menu-item" role="menuitem">Logout</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Users Table -->
+      <div id="adminUsers" class="table-wrapper">
+        <!-- Table is injected dynamically by admin.js -->
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% endblock %}

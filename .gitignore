@@ -1,0 +1,49 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Environment variables (VERY IMPORTANT)
+.env
+
+# VS Code settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Database files (optional)
+*.sqlite3
+
+# Flask instance folder
+instance/
+
+# PyInstaller
+*.spec
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# Distribution / build
+build/
+dist/
+*.egg-info/
+
+# Node (if frontend included)
+node_modules/
+
+# Temporary files
+*.tmp
+*.temp
