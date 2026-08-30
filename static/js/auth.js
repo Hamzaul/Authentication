@@ -9,9 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
  
 // === TOAST HELPER (in case not defined elsewhere) ===
-function showToast(message, type = "success") {
+function showToast(, type = "success") {
   const existing = document.querySelector(".toast");
-  if (existing) existing.remove();
+  if () existing.remove();
  
   const toast = document.createElement("div");
   toast.className = `toast toast-${type}`;
