@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const user = JSON.parse(localStorage.getItem("user"));
 
   if (!user) {
-    document.("profileUsername").textContent = "Not logged in";
-    document.("profileEmail").textContent = "-";
+    document.getElementById("profileUsername").textContent = "Not logged in";
+    document.getElemtById("profileEmail").textContent = "-";
     return;
   }
 
