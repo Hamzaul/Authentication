@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!res.ok) throw new Error(data.error || "Login failed");
 
       msg.textContent = "";
-      loginForm.classList.add("hidden");
+      login("hidden");
       dashboard.classList.remove("hidden");
       dashboard.classList.add("show");
 
