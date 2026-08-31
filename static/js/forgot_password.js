@@ -1,4 +1,4 @@
-document.getElementById("forgotForm").addEventListener("submit", as (e) => {
+document.getElementById("forgotForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const email = document.getElementById("forgotEmail").value;
 
