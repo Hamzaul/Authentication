@@ -11,7 +11,7 @@ from pymongo import MongoClient
 from bson import ObjectId
 from dotenv import load_dotenv
  
-# ====== Load env ======
+# Load env 
 load_dotenv()
  
 app = Flask(__name__, static_folder='static', template_folder='templates')
@@ -24,13 +24,13 @@ app.config.update(
     SESSION_COOKIE_SECURE=True,
 )
  
-# ====== Config ======
+#  Config 
 MONGO_URI    = os.getenv('MONGO_URI')
 ADMIN_USER   = os.getenv("ADMIN_USER")
 ADMIN_PASS   = os.getenv("ADMIN_PASS")
 BASE_URL     = os.getenv("BASE_URL", "https://authentication-eng2.onrender.com").rstrip("/")
  
-# ====== Mail Setup ======
+# Mail Setup
 app.config.update(
     MAIL_SERVER          = os.getenv("MAIL_SERVER"),
     MAIL_PORT            = int(os.getenv("MAIL_PORT", 587)),
@@ -51,10 +51,7 @@ token_store   = db['tokens']   # unified collection for verify + reset tokens
 # ====== TTL index: MongoDB auto-deletes expired tokens ======
 token_store.create_index("expires_at", expireAfterSeconds=0)
  
- 
-# ─────────────────────────────────────────────
-#  HELPERS
-# ─────────────────────────────────────────────
+
  
 def is_valid_email(email: str) -> bool:
     return bool(re.match(r"^[^@]+@[^@]+\.[^@]+$", email))
@@ -102,9 +99,9 @@ def send_email(subject: str, recipient: str, body: str) -> bool:
         return False
  
  
-# ─────────────────────────────────────────────
+
 #  USER AUTH API
-# ─────────────────────────────────────────────
+
  
 @app.route('/api/register', methods=['POST'])
 def api_register():
@@ -170,9 +167,9 @@ def api_me(username):
     return jsonify({'profile': {'username': doc['username'], 'email': doc.get('email', '')}})
  
  
-# ─────────────────────────────────────────────
+
 #  EMAIL VERIFICATION
-# ─────────────────────────────────────────────
+
  
 @app.route('/verify-email')
 def verify_email():
