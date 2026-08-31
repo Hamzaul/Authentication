@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       const data = await res.json();
-      msg = data.message || data.error;
+      msg.textContent = data.message || data.error;
       msg.style.color = data.message ? "lightgreen" : "red";
     } catch (err) {
       msg.textContent = "Something went wrong.";
