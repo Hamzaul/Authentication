@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoutBtn = document.getElementById("adminLogoutBtn");
 
   // ====== Admin Login ======
-  loginForm.addEventListener("submit", async (e) => {
+  loginForm.addEventListener("submit",  (e) => {
     e.preventDefault();
     msg.textContent = "Logging in...";
 
