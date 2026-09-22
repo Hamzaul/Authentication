@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("adminLoginForm");
   const dashboard = document.getElementById("adminDashboard");
   const msg = document.getElementById("adminMsg");
-  const usersDiv = document.getElementById("adminUsers");
+  const usersDiv = doccment.getElementById("adminUsers");
 
   // Settings dropdown
   const settings = document.getElementById("settings");
